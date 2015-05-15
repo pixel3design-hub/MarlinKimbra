@@ -55,7 +55,7 @@
 //some filament is retracted. The filament retracted is re-added before the next extrusion
 //or when the target temperature is less than EXTRUDE_MINTEMP and the actual temperature
 //is greater than IDLE_OOZING_MINTEMP and less than IDLE_OOZING_FEEDRATE
-//#define IDLE_OOZING_PREVENT
+#define IDLE_OOZING_PREVENT
 #define IDLE_OOZING_MINTEMP           EXTRUDE_MINTEMP + 5
 #define IDLE_OOZING_MAXTEMP           IDLE_OOZING_MINTEMP + 5
 #define IDLE_OOZING_FEEDRATE          45    //default feedrate for retracting (mm/s)
@@ -66,7 +66,7 @@
 
 //  extruder run-out prevention.
 //if the machine is idle, and the temperature over MINTEMP, every couple of SECONDS some filament is extruded
-//#define EXTRUDER_RUNOUT_PREVENT
+#define EXTRUDER_RUNOUT_PREVENT
 #define EXTRUDER_RUNOUT_MINTEMP 190
 #define EXTRUDER_RUNOUT_SECONDS  30
 #define EXTRUDER_RUNOUT_ESTEPS   14  //mm filament
@@ -81,7 +81,7 @@
 //This is for controlling a fan to cool down the stepper drivers
 //it will turn on when any driver is enabled
 //and turn off after the set amount of seconds from last driver being disabled again
-#define CONTROLLERFAN_PIN -1 //Pin used for the fan to cool controller (-1 to disable)
+#define CONTROLLERFAN_PIN 32 //Pin used for the fan to cool controller (-1 to disable)
 #define CONTROLLERFAN_SECS 60 //How many seconds, after all motors were disabled, the fan should run
 #define CONTROLLERFAN_SPEED 255  // == full speed
 
@@ -95,7 +95,7 @@
 // extruder temperature is above/below EXTRUDER_AUTO_FAN_TEMPERATURE.
 // Multiple extruders can be assigned to the same pin in which case
 // the fan will turn on when any selected extruder is above the threshold.
-#define EXTRUDER_0_AUTO_FAN_PIN -1
+#define EXTRUDER_0_AUTO_FAN_PIN 63
 #define EXTRUDER_1_AUTO_FAN_PIN -1
 #define EXTRUDER_2_AUTO_FAN_PIN -1
 #define EXTRUDER_3_AUTO_FAN_PIN -1
@@ -315,7 +315,7 @@
 // Babystepping enables the user to control the axis in tiny amounts, independently from the normal printing process
 // it can e.g. be used to change z-positions in the print startup phase in real-time
 // does not respect endstops!
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #ifdef BABYSTEPPING
   #define BABYSTEP_XY  //not only z, but also XY in the menu. more clutter, more functions
   #define BABYSTEP_INVERT_Z false  //true for inverse movements in Z
