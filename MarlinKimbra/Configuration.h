@@ -34,14 +34,14 @@
 
 // This determines the communication speed of the printer
 // 115200 - 250000
-#define BAUDRATE 115200
+#define BAUDRATE 250000
 
 // This enables the serial port associated to the Bluetooth interface on AT90USB devices
 //#define BTENABLED
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
-//#define MACHINE_UUID "00000000-0000-0000-0000-000000000000"
+//#define MACHINE_UUID "0e3de245-c32a-4e7d-9955-905f7a0c3758"
 
 // If you want test the firmware uncomment below. Use Serial arduino monitor...
 //#define FIRMWARE_TEST // ONLY BAUDRATE 115200
@@ -70,14 +70,14 @@
 /***********************************************************************/
 
 // This defines the number of extruder real or virtual
-#define EXTRUDERS 1
+#define EXTRUDERS 2
 
 // This defines the number of Driver extruder you have and use
-#define DRIVER_EXTRUDERS 1
+#define DRIVER_EXTRUDERS 2
 
 // This is used for single nozzle and multiple extrusion configuration
 // Uncomment below to enable (One Hotend)
-//#define SINGLENOZZLE
+#define SINGLENOZZLE
 
 /***********************************************************************
  *********************** Multiextruder MKR4  ***************************
@@ -174,7 +174,7 @@
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10 // (degC)
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 10  // (seconds)
+#define TEMP_RESIDENCY_TIME 5  // (seconds)
 #define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
 #define TEMP_WINDOW     1       // (degC) Window around target to start the residency timer x degC early.
 
@@ -224,9 +224,9 @@
 #define K1 0.95 // Smoothing factor within the PID
 
 //             HotEnd{HE0,HE1,HE2,HE3}
-#define DEFAULT_Kp {40, 40, 40, 40}     // Kp for E0, E1, E2, E3
-#define DEFAULT_Ki {07, 07, 07, 07}     // Ki for E0, E1, E2, E3
-#define DEFAULT_Kd {60, 60, 60, 60}     // Kd for E0, E1, E2, E3
+#define DEFAULT_Kp {19.44, 40, 40, 40}     // Kp for E0, E1, E2, E3
+#define DEFAULT_Ki {1.12, 07, 07, 07}     // Ki for E0, E1, E2, E3
+#define DEFAULT_Kd {84.10, 60, 60, 60}     // Kd for E0, E1, E2, E3
 //===========================================================================
 
 
@@ -255,9 +255,9 @@
 //#define PID_BED_DEBUG // Sends debug data to the serial port.
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-#define  DEFAULT_bedKp 10.00
-#define  DEFAULT_bedKi .023
-#define  DEFAULT_bedKd 305.4
+#define  DEFAULT_bedKp 680.27
+#define  DEFAULT_bedKi 66.43
+#define  DEFAULT_bedKd 1741.48
 
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from pidautotune
@@ -327,16 +327,16 @@
   //#define DISPLAY_CHARSET_HD44780_CYRILLIC
 
 //#define ULTRA_LCD  //general LCD support, also 16x2
-//#define DOGLCD  // Support for SPI LCD 128x64 (Controller ST7565R graphic Display Family)
+#define DOGLCD  // Support for SPI LCD 128x64 (Controller ST7565R graphic Display Family)
 //#define SDSUPPORT // Enable SD Card Support in Hardware Console
 //#define SDSLOW // Use slower SD transfer mode (not normally needed - uncomment if you're getting volume init error)
 //#define SD_CHECK_AND_RETRY // Use CRC checks and retries on the SD communication
-//#define ENCODER_PULSES_PER_STEP 1 // Increase if you have a high resolution encoder
+#define ENCODER_PULSES_PER_STEP 1 // Increase if you have a high resolution encoder
 //#define ENCODER_STEPS_PER_MENU_ITEM 5 // Set according to ENCODER_PULSES_PER_STEP or your liking
 //#define ULTIMAKERCONTROLLER //as available from the Ultimaker online store.
 //#define ULTIPANEL  //the UltiPanel as on Thingiverse
 //#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100 // the duration the buzzer plays the UI feedback sound. ie Screen Click
-//#define LCD_FEEDBACK_FREQUENCY_HZ 1000         // this is the tone frequency the buzzer plays when on UI feedback. ie Screen Click
+//#define LCD_FEEDBACK_FREQUENCY_HZ 1      // this is the tone frequency the buzzer plays when on UI feedback. ie Screen Click
                                                  // 0 to disable buzzer feedback. Test with M300 S<frequency Hz> P<duration ms>
 // PanelOne from T3P3 (via RAMPS 1.4 AUX2/AUX3)
 // http://reprap.org/wiki/PanelOne
@@ -364,7 +364,7 @@
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
 // ==> REMEMBER TO INSTALL U8glib to your ARDUINO library folder: http://code.google.com/p/u8glib/wiki/u8glib
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 // The RepRapWorld REPRAPWORLD_KEYPAD v1.1
 // http://reprapworld.com/?products_details&products_id=202&cPath=1591_1626
@@ -427,7 +427,7 @@
 // 13 Basque-Euskera
 // 14 Portuguese (Brazil)
 
-#define LANGUAGE_CHOICE 7
+#define LANGUAGE_CHOICE 1
 
 
 //===========================================================================
@@ -440,8 +440,8 @@
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable EEPROM support
-//#define EEPROM_SETTINGS
-//#define EEPROM_CHITCHAT
+#define EEPROM_SETTINGS
+#define EEPROM_CHITCHAT
 // to disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
 // please keep turned on if you can.
 //#define DISABLE_M503
@@ -451,7 +451,7 @@
 //==================== Bowden Filament management ===========================
 //#define EASY_LOAD
 
-#define BOWDEN_LENGTH 250       // mm
+#define BOWDEN_LENGTH 470       // mm
 #define LCD_PURGE_LENGTH 3      // mm
 #define LCD_RETRACT_LENGTH 3    // mm
 #define LCD_PURGE_FEEDRATE 3    // mm/s
